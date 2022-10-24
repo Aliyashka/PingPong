@@ -23,8 +23,6 @@ class HitBall:
         #b.goto(0, 0)
         b.goto(randint(0, 50), randint(0, 50))
 
-        GameScreen.bindKeys(self.speedincrease, "I")
-        GameScreen.bindKeys(self.speeddecrease, "K")
 
     def speedincrease(self):
         self.dx += 2 * (-1 if self.dx < 0 else 1)

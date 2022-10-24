@@ -42,6 +42,9 @@ hitBalls = [HitBall(eventManager), HitBall(eventManager), HitBall(eventManager)]
 
 collisionManager = CollisionManager(players, hitBalls, obstacles)
 
+GameScreen.bindKeys(lambda: [i.speedincrease() for i in hitBalls], "I")
+GameScreen.bindKeys(lambda: [i.speeddecrease() for i in hitBalls], "K")
+
 while 1:
     gameScreen.update()
     collisionManager.update()
