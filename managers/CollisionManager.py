@@ -22,6 +22,7 @@ class CollisionManager:
                         hitball.ball.ycor() < obstacle.turt.ycor() + obstacle.height * obstacle.correctMultipler and \
                         hitball.ball.xcor() > obstacle.turt.xcor() - obstacle.width * obstacle.correctMultipler:
                     hitball.dx *= -1
+                    obstacle.randomPosition()
 
     def checkPlayersWithBalls(self):
         # Check players collisions with the the balls
