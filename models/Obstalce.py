@@ -7,32 +7,47 @@ class Obstacle():
     height = 5
     correctMultipler = 13
 
-    def __init__(self,x,y):
+    def __init__(self, x, y):
         self.turt = turtle.Turtle()
         self.turt.speed(0)
-        #self.square()
-        #self.rectangle()
-        self.ball()
+        #self.triangle()
+
+        if randint(0, 1):
+            self.ball()
+        else:
+            self.rectangle()
+
         self.turt.goto(x, y)
 
-    def square(self):
+    def rectangle(self):
         self.turt.shape("square")
         self.turt.color("green")
         self.turt.shapesize(stretch_wid=self.width, stretch_len=self.height)
         self.turt.penup()
 
+    # TODO: something is wrong with drawing
+    def triangle(self):
+        t = self.turt
+        t.fillcolor("red")
 
-    def rectangle(self, width, height):
-        turtle = self.turt
-        turtle.up()
-        turtle.goto(50, 50)
-        turtle.down()
+        # start the filling color
+        t.begin_fill()
+
+        # drawing the triangle of side s
+        for _ in range(3):
+            t.forward(50)
+            t.right(-120)
+
+        # ending the filling of the color
+        t.end_fill()
+        t.penup()
 
     def ball(self):
         self.turt.shape("circle")
         self.turt.color("red")
         self.turt.shapesize(stretch_wid=self.width, stretch_len=self.height)
         self.turt.penup()
+
     #Appearance and dissapearance of obstilces
     def randomPosition(self):
 

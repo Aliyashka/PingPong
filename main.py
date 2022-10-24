@@ -23,7 +23,7 @@ players = [Pad(Pad.LEFTSIDE, "W", "S", "Aliya"),
            Pad(Pad.RIGHTSIDE, "E", "D", "Dinara")]
 
 gameScreen.drawSketch(players)
-obstacles = [Obstacle(200, -110), Obstacle(-200, -150)]
+obstacles = [Obstacle(200, -110), Obstacle(-150, -150), Obstacle(-50, -150)]
 
 
 def onWin(players, event):
