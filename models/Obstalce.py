@@ -10,13 +10,29 @@ class Obstacle():
     def __init__(self,x,y):
         self.turt = turtle.Turtle()
         self.turt.speed(0)
+        #self.square()
+        #self.rectangle()
+        self.ball()
+        self.turt.goto(x, y)
+
+    def square(self):
         self.turt.shape("square")
         self.turt.color("green")
         self.turt.shapesize(stretch_wid=self.width, stretch_len=self.height)
         self.turt.penup()
-        #self.turt.goto(250, -150)
-        self.turt.goto(x, y)
 
+
+    def rectangle(self, width, height):
+        turtle = self.turt
+        turtle.up()
+        turtle.goto(50, 50)
+        turtle.down()
+
+    def ball(self):
+        self.turt.shape("circle")
+        self.turt.color("red")
+        self.turt.shapesize(stretch_wid=self.width, stretch_len=self.height)
+        self.turt.penup()
     #Appearance and dissapearance of obstilces
     def randomPosition(self):
 
