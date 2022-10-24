@@ -10,4 +10,4 @@ class Obstacle():
         self.turt.color("green")
         self.turt.shapesize(stretch_wid=6, stretch_len=2)
         self.turt.penup()
-        #self.turt.goto(100, 100)
+        self.turt.goto(250, -200)

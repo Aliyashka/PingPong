@@ -24,9 +24,11 @@ hitBalls = [HitBall(eventManager), HitBall(eventManager), HitBall(eventManager)]
 
 players = [Pad(-400, "W", "S"), Pad(400, "Up", "Down"), Pad(400, "E", "D")]
 gameScreen.drawSketch(players)
-collisionManager = CollisionManager(players, hitBalls)
+obstacles = [Obstacle()]
 
-Obstacle()
+collisionManager = CollisionManager(players, hitBalls, obstacles)
+
+
 
 while 1:
     gameScreen.update()
