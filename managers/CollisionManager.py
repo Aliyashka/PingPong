@@ -16,11 +16,12 @@ class CollisionManager:
     def checkObstaclesWithBalls(self):
         for hitball in self.hitBalls:
             for obstacle in self.obstacles:
-                # Сравнить между собой
-                hitball.ball.ycor()
-                hitball.ball.xcor()
-                obstacle.turt.xcor()
-                obstacle.turt.ycor()
+                # Compare with each other
+                if hitball.ball.xcor() > obstacle.turt.xcor() - obstacle.width * obstacle.correctMultipler and \
+                        hitball.ball.xcor() < obstacle.turt.xcor() + obstacle.width * obstacle.correctMultipler and \
+                        hitball.ball.ycor() < obstacle.turt.ycor() + obstacle.height * obstacle.correctMultipler and \
+                        hitball.ball.xcor() > obstacle.turt.xcor() - obstacle.width * obstacle.correctMultipler:
+                    hitball.dx *= -1
 
     def checkPlayersWithBalls(self):
         # Check players collisions with the the balls
@@ -30,11 +31,17 @@ class CollisionManager:
                 collisionDistance = self.collisionDistance
 
                 # Ball collision with players paddles
-                if ball.xcor() > 360 and ball.xcor() < 370 and ball.ycor() < player.ycor() + collisionDistance and ball.ycor() > player.ycor() - collisionDistance:
+                if ball.xcor() > 360 and \
+                        ball.xcor() < 370 and \
+                        ball.ycor() < player.ycor() + collisionDistance and \
+                        ball.ycor() > player.ycor() - collisionDistance:
                     ball.setx(360)
                     hitball.dx *= -1
 
-                if ball.xcor() < -360 and ball.xcor() > -370 and ball.ycor() < player.ycor() + collisionDistance and ball.ycor() > player.ycor() - collisionDistance:
+                if ball.xcor() < -360 and \
+                        ball.xcor() > -370 and \
+                        ball.ycor() < player.ycor() + collisionDistance and \
+                        ball.ycor() > player.ycor() - collisionDistance:
                     ball.setx(-360)
                     hitball.dx *= -1
 
