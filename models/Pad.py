@@ -9,9 +9,11 @@ class Pad():
     LEFTSIDE = -400
     RIGHTSIDE = 400
     name = None
+    initSide = None
 
-    def __init__(self, gox, up, down, name):
+    def __init__(self, initSide, up, down, name):
         self.name = name
+        self.initSide = initSide
 
         self.turt = turtle.Turtle()
         self.turt.speed(0)
@@ -19,7 +21,7 @@ class Pad():
         self.turt.color("black")
         self.turt.shapesize(stretch_wid=6, stretch_len=2)
         self.turt.penup()
-        self.turt.goto(gox, 0)
+        self.turt.goto(initSide, 0)
 
         GameScreen.bindKeys(self.moveup, up)
         GameScreen.bindKeys(self.movedown, down)

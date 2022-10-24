@@ -17,17 +17,29 @@ from managers.EventManager import EventManager
 from models.HitBall import HitBall
 from models.Obstalce import Obstacle
 
-eventManager = EventManager()
-eventManager.registerCallback(lambda: gameScreen.drawSketch(players), EventManager.EVENT_GOAL)
 gameScreen = GameScreen()
-hitBalls = [HitBall(eventManager), HitBall(eventManager), HitBall(eventManager)]
-
 players = [Pad(Pad.LEFTSIDE, "W", "S", "Aliya"),
            Pad(Pad.RIGHTSIDE, "Up", "Down", "Sasha"),
            Pad(Pad.RIGHTSIDE, "E", "D", "Dinara")]
 
 gameScreen.drawSketch(players)
-obstacles = [Obstacle(200,-110),Obstacle(-200,110)]
+obstacles = [Obstacle(200, -110), Obstacle(-200, -150)]
+
+
+def onWin(players, event):
+    for i in players:
+        if i.initSide == Pad.LEFTSIDE and event == EventManager.EVENT_GOAL_RIGHT or \
+                i.initSide == Pad.RIGHTSIDE and event == EventManager.EVENT_GOAL_LEFT:
+            i.score += 1
+    # Redraw score
+    gameScreen.drawSketch(players)
+
+
+eventManager = EventManager()
+eventManager.registerCallback(lambda event: onWin(players, event), EventManager.EVENT_GOAL_LEFT)
+eventManager.registerCallback(lambda event: onWin(players, event), EventManager.EVENT_GOAL_RIGHT)
+hitBalls = [HitBall(eventManager), HitBall(eventManager), HitBall(eventManager)]
+
 collisionManager = CollisionManager(players, hitBalls, obstacles)
 
 while 1:

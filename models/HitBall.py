@@ -53,13 +53,14 @@ class HitBall:
 
         xmax = 500
 
+        if b.xcor() > xmax:
+            self.eventManager.dispatchEvent(EventManager.EVENT_GOAL_RIGHT)
+
+        if b.xcor() < -xmax:
+            self.eventManager.dispatchEvent(EventManager.EVENT_GOAL_LEFT)
+
         if b.xcor() > xmax or b.xcor() < -xmax:
             b.goto(0, 0)
             self.dy *= -1
-            self.eventManager.dispatchEvent(EventManager.EVENT_GOAL)
+            self.dx *= -1
 
-        if b.xcor() > xmax:
-            players[0] += 1
-
-        if b.xcor() < -xmax:
-            players[1] += 1
