@@ -22,7 +22,10 @@ eventManager.registerCallback(lambda: gameScreen.drawSketch(players), EventManag
 gameScreen = GameScreen()
 hitBalls = [HitBall(eventManager), HitBall(eventManager), HitBall(eventManager)]
 
-players = [Pad(-400, "W", "S"), Pad(400, "Up", "Down"), Pad(400, "E", "D")]
+players = [Pad(Pad.LEFTSIDE, "W", "S", "Aliya"),
+           Pad(Pad.RIGHTSIDE, "Up", "Down", "Sasha"),
+           Pad(Pad.RIGHTSIDE, "E", "D", "Dinara")]
+
 gameScreen.drawSketch(players)
 obstacles = [Obstacle(200,-110),Obstacle(-200,110)]
 collisionManager = CollisionManager(players, hitBalls, obstacles)

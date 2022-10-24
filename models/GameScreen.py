@@ -47,5 +47,5 @@ class GameScreen:
     def drawSketch(self, players: list):
         s = self.sketch
         s.clear()
-        title = ', '.join(f"Player{i}: {p.score}" for i, p in enumerate(players))
+        title = ', '.join(f"{p.name}{i}: {p.score}" for i, p in enumerate(players))
         s.write(title, align="center", font=("Courier", 24, "normal"))

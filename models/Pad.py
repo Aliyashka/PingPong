@@ -6,8 +6,13 @@ class Pad():
     distance = 20
     score = 0
     turt = None
+    LEFTSIDE = -400
+    RIGHTSIDE = 400
+    name = None
 
-    def __init__(self, gox, up, down):
+    def __init__(self, gox, up, down, name):
+        self.name = name
+
         self.turt = turtle.Turtle()
         self.turt.speed(0)
         self.turt.shape("square")
